@@ -24,9 +24,12 @@ if ! [ -x "$(command -v zsh)" ]; then
     sudo $PM $IC -y zsh
 fi
 
+
 # Install Oh-my-zsh
-if !‌ [ -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if ! [ -d ~/.oh-my-zsh ]; then
+    # sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+    # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) && exit"
+    echo exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 
@@ -40,7 +43,7 @@ sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUS
 # Update .zshrc file
 if [ -f ~/.zshrc ]; then
     sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-    sed -i 's/ZSH_THEME="rubbyrussell/ZSH_THEME="bira"/g' ~/.zshrc
+    sed -i 's/ZSH_THEME="rubbyrussell"/ZSH_THEME="bira"/g' ~/.zshrc
 else
     echo 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting)' > ~/.zshrc
 fi
