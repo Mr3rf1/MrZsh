@@ -40,6 +40,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 # Update .zshrc file
 if [ -f "~/.zshrc" ]; then
     sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+    sed -i 's/ZSH_THEME="rubbyrussell/ZSH_THEME="bira"/g' ~/.zshrc
 else
     echo 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting)' > ~/.zshrc
 fi
