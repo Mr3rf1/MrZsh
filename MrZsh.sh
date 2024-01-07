@@ -25,8 +25,20 @@ else
 fi
 
 
-# Install Zsh
+# Update repos
 sudo $PM $UC
+
+# Install curl
+if ! [ -x "$(command -v curl)" ]; then
+    sudo $PM $IC -y curl
+fi
+
+# Install git
+if ! [ -x "$(command -v git)" ]; then
+    sudo $PM $IC -y git
+fi
+
+# Install Zsh
 if ! [ -x "$(command -v zsh)" ]; then
     sudo $PM $IC -y zsh
 else
@@ -46,6 +58,7 @@ fi
 if ! [ -e ~/.oh-my-zsh ]; then
     echo exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     # echo out=$($ZSH_CUSTOM) && echo $out && exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # out=$(echo echo '$ZSH_CUSTOM' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
 else
     echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Oh-my-zsh is already installed."
 fi
