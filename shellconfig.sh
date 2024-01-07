@@ -20,14 +20,16 @@ fi
 
 # Install Zsh
 sudo $PM update
-if [ -x "$(command -v zsh)" ]; then
+if [ ! -x "$(command -v zsh)" ]; then
     sudo $PM $IC -y zsh
 fi
 
 # Install Oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -f "~/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
-if [ -f "~/.zshrc" ]; then
+if [ ! -f "~/.zshrc" ]; then
     touch ~/.zshrc
 fi
 
