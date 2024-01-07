@@ -20,7 +20,7 @@ elif [ -x "$(command -v pacman)" ]; then
     IC="-S"
     UC="-Syy"
 else
-    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Package mananger not found." >&2
+    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Package mananger not found.\033[0m" >&2
     exit 1
 fi
 
@@ -42,7 +42,7 @@ fi
 if ! [ -x "$(command -v zsh)" ]; then
     sudo $PM $IC -y zsh
 else
-    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Zsh is already installed."
+    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Zsh is already installed.\033[0m"
 fi
 
 
@@ -50,7 +50,7 @@ fi
 if ! [ -x "$(command -v neofetch)" ]; then
     sudo $PM $IC -y neofetch
 else
-    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m neofetch is already installed."
+    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m neofetch is already installed.\033[0m"
 fi
 
 
@@ -60,7 +60,7 @@ if ! [ -e ~/.oh-my-zsh ]; then
     # echo out=$($ZSH_CUSTOM) && echo $out && exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     # out=$(echo echo '$ZSH_CUSTOM' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
 else
-    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Oh-my-zsh is already installed."
+    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Oh-my-zsh is already installed.\033[0m"
 fi
 
 
@@ -68,14 +68,14 @@ fi
 if ! [ -e $ZSH_CUSTOM/plugins/zsh-autosuggestions ]; then
     sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 else
-    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Zsh-autosuggestions is already installed."
+    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Zsh-autosuggestions is already installed.\033[0m"
 fi
 
 # Install zsh-syntax-highlighting
 if ! [ -e $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ]; then
     sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 else
-    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Zsh-syntax-highlighting is already installed."
+    echo -e "\u001b[33m[\u001b[31m!\u001b[33m]\u001b[31m Zsh-syntax-highlighting is already installed.\033[0m"
 fi
 
 
@@ -86,10 +86,10 @@ if [ -e ~/.zshrc ]; then
     if ! grep -Fxq "neofetch" ~/.zshrc;then
         echo "neofetch" >> ~/.zshrc
     fi
-    echo -e "\u001b[33m[\u001b[32m!\u001b[33m]\u001b[32m Plugins configed in .zshrc"
+    echo -e "\u001b[33m[\u001b[32m!\u001b[33m]\u001b[32m Plugins configed in .zshrc\033[0m"
 else
     echo 'ZSH_THEME="bira"\nplugins=(git zsh-autosuggestions zsh-syntax-highlighting)\nneofetch' > ~/.zshrc
-    echo -e "\u001b[33m[\u001b[32m!\u001b[33m]\u001b[32m A new .zshrc created."
+    echo -e "\u001b[33m[\u001b[32m!\u001b[33m]\u001b[32m A new .zshrc created.\033[0m"
 fi
 
 # Set Zsh as default shell
