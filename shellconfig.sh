@@ -25,13 +25,11 @@ if [ ! -x "$(command -v zsh)" ]; then
 fi
 
 # Install Oh-my-zsh
-if [ ! -f "~/.oh-my-zsh" ]; then
+if [ ! -d "~/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-if [ ! -f "~/.zshrc" ]; then
-    touch ~/.zshrc
-fi
+
 
 # Install zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -40,7 +38,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 # Update .zshrc file
-sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+if [ -f "~/.zshrc" ]; then
+    sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+else
+    echo 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting)' > ~/.zshrc
+fi
 
 # Set Zsh as default shell
 chsh -s $(which zsh)
