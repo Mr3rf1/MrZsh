@@ -15,6 +15,10 @@ elif [ -x "$(command -v dnf)" ]; then
     PM="dnf"
     IC="install"
     UC="update"
+elif [ -x "$(command -v pkg)" ]; then
+    PM="pkg"
+    IC="install"
+    UC="update"
 elif [ -x "$(command -v pacman)" ]; then
     PM="pacman"
     IC="-S"
