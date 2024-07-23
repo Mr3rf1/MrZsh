@@ -97,7 +97,7 @@ else
 fi
 
 # Set Zsh as default shell
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 # Go to zsh :)
 zsh
